@@ -1,0 +1,21 @@
+{
+  "name": "aulas_node_backend",
+  "version": "0.0.1",
+  "description": "Qualquer coisa",
+  "homepage": "https://github.com/joaosxfz/aulas_node_backend#readme",
+  "bugs": {
+    "url": "https://github.com/joaosxfz/aulas_node_backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaosxfz/aulas_node_backend.git"
+  },
+  "license": "ISC",
+  "author": "João Victor",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "node index.js"
+  }
+}
