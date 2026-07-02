@@ -8,4 +8,4 @@ Nomenclaturas p/ as branches:
 feat - feature - criar um novo projeto
 fix - bugfix - corrijir algo errado no teclado
 doc - documemtation - documentar algo novo no projeto
-```
+``` 
