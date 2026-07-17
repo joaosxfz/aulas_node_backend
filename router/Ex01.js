@@ -2,7 +2,9 @@ import express from 'express'
 
 const router = express.Router()
 
-router.get("/api/v1/produto", (req, res) => {
+//1. Peça ao usuário o nome de um produto e o preço. 
+// Mostre uma mensagem dizendo quanto custa o produto.
+router.get("/", (req, res) => {
     const { produto, preco } = req.query
 
     res.status(200).send({ message: `O produto ${produto} custa ${preco}` })
