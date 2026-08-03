@@ -10,4 +10,4 @@ router.get("/", (req, res) => {
     res.status(200).send({ message: `O produto ${produto} custa ${preco}` })
 }) 
 
-export default router
+export default router 
