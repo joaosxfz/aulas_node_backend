@@ -1,0 +1,24 @@
+{
+  "name": "aulas_node_backend",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/joaosxfz/aulas_node_backend#readme",
+  "bugs": {
+    "url": "https://github.com/joaosxfz/aulas_node_backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaosxfz/aulas_node_backend.git"
+  },
+  "license": "ISC",
+  "author": "joao",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
