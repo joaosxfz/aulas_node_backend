@@ -1,0 +1,84 @@
+import express from 'express'
+import temp from '../repository/tempe.js'
+
+const router = express.Router()
+
+// Celsius para Fahrenheit
+router.post("/FxC", (req, res) => {
+    const { C } = req.body
+
+    if (!C) {
+        res.send({ mensage: "Por favor informar o número." })
+        return
+    }
+
+    const resultado = (Number(C) * 9 / 5) + 32
+    res.send({ mensage: resultado })
+})
+//---------------------------------------------------------------
+// Fahrenheit para Celsius
+router.post("/CxF", (req, res) => {
+    const { F } = req.body
+
+    if (!F) {
+        res.send({ mensage: "Por favor informar o número." })
+        return
+    }
+
+    const resultado = (Number(F) - 32) * 5 / 9
+    res.send({ mensage: resultado })
+})
+//---------------------------------------------------------------
+// Celsius para Kelvin
+router.post("/KxC", (req, res) => {
+    const { C } = req.body
+
+    if (!C) {
+        res.send({ mensage: "Por favor informar o número." })
+        return
+    }
+
+    const resultado = Number(C) + 273.15
+    res.send({ mensage: resultado })
+})
+//---------------------------------------------------------------
+// Kelvin para Celsius
+router.post("/CxK", (req, res) => {
+    const { K } = req.body
+
+    if (!K) {
+        res.send({ mensage: "Por favor informar o número." })
+        return
+    }
+
+    const resultado = Number(K) - 273.15
+    res.send({ mensage: resultado })
+})
+//---------------------------------------------------------------
+// Réaumur para Celsius
+router.post("/RxC", (req, res) => {
+    const { Re } = req.body
+
+    if (!Re) {
+        res.send({ mensage: "Por favor informar o número." })
+        return
+    }
+
+    const resultado = Number(Re) * 5 / 4
+    res.send({ mensage: resultado })
+})
+//---------------------------------------------------------------
+// Celsius para Rankine
+router.post("/RaxC", (req, res) => {
+    const { C } = req.body
+
+    if (!C) {
+        res.send({ mensage: "Por favor informar o número." })
+        return
+    }
+
+    const resultado = (Number(C) + 273.15) * 9 / 5
+    res.send({ mensage: resultado })
+})
+
+export default router

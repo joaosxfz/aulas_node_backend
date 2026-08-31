@@ -1,14 +1,20 @@
 import express from 'express'
-import ex01 from './router/Ex01.js'
-
+import router from './router/carro.js'
+import database from './config/database.js'
 
 const app = express()
+
 app.use(express.json())
 
+app.use("/api/v1/carro", router)
 
-
-app.use('/api/v1/produto', ex01)
-
-app.listen(3000, () => {
-    console.log("Servidor escutando na porta 3000")
-})
+database.db
+    .sync({ force: true })
+    .then((_) => {
+        app.listen(3000, () => {
+            console.log("Servidor ouvindo na porta 3000")
+        })
+    })
+    .catch((e) => {
+        console.log(e)
+    })
