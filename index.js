@@ -1,6 +1,7 @@
 import express from 'express'
 import router from './router/carro.js'
 import database from './config/database.js'
+//import Carro from './model/carro.js'
 
 const app = express()
 
@@ -9,7 +10,7 @@ app.use(express.json())
 app.use("/api/v1/carro", router)
 
 database.db
-    .sync({ force: true })
+    .sync({ force: false })
     .then((_) => {
         app.listen(3000, () => {
             console.log("Servidor ouvindo na porta 3000")

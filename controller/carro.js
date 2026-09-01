@@ -4,9 +4,9 @@ class ControllerCarro {
 
 
     // Recebimento e a Saida das informações
-    Buscar(_, res) {
+    async Buscar(_, res) {
         try {
-            const carros = ServiceCarro.Buscar()
+            const carros = await ServiceCarro.Buscar()
             res.status(200).send({ mensagem: carros })
         } catch (error) {
             res.status(500).send({
