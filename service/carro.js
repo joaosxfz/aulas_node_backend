@@ -1,44 +1,66 @@
 import RepositoryCarro from '../repository/carro.js'
 
-
 class ServiceCarro {
 
-    // Core- Regra De Negocio
-    async Buscar() {
-        return RepositoryCarro.Find
+    // Core- Regra de Negocio
+    Buscar() {
+        return RepositoryCarro
     }
 
     Detalhe(id) {
-        // if (!id) {
-        //     throw new Error("Favor informar o ID")
-        // }
-        // const carro = RepositoryCarro.find(it => it.id === id)
-        // if (!carro) {
-        //     throw new Error(`ID ${id} do carro não encontrado`)
-        // }
-        // return carro
+        if(!id) {
+            throw new Error("Favor informar o ID")
+        }
+
+        const carro = RepositoryCarro.find(it => it.id === id)
+        
+        if(!carro) {
+            throw new Error(`ID ${id} do carro não encontrado`)
+        }
+
+        return carro
     }
-    // função ( paramatros, pode haver infinitos parametros, mais tenta deixar 5 a 6 paramatros )
-    // da para reduzir parametros com Objetos
+    // Função(parametros, parametros, parametros)
     Criar(id, marca, ano) {
-    //     if (!id || !marca || !ano) {
-    //         throw new Error("Favor informar todos os dados")
-    //     }
-
-    //     RepositoryCarro.push({ id, marca, ano })
-    //     return { id, marca, ano }
+        if (!id || !marca || !ano) {
+            throw new Error("Favor informar todos os dados")
+        }
+        RepositoryCarro.push({ id, marca, ano })
+        return { id, marca, ano }
     }
 
+    Alterar(id, marca, ano) {
+        if (!id || !marca || !ano) {
+            throw new Error("Favor informar os dados");
+        }
 
-    Alterar() { }
+        const index = RepositoryCarro.findIndex(carro => carro.id === Number(id));
+
+        if (index) {
+            throw new Error("Carro não encontrado");
+        }
+
+        RepositoryCarro[index] = {
+            id: Number(id),
+            marca,
+            ano
+        };
+
+        return RepositoryCarro[index]
+    }
 
     Deletar(id) {
-    //     if (!id) {
-    //         throw new Error("Favor informar o ID")
-    //     }
-    //     RepositoryCarro.splice(it => it.id === id, 1)
-    //     return id
+        if (!id) {
+            throw new Error("Favor informar o ID")
+        }
+        
+        const carro = RepositoryCarro.findIndex(it => it.id == id)
+
+        RepositoryCarro.splice(carro, 1)
+
+        return id
     }
 
 }
+
 export default new ServiceCarro()
