@@ -18,7 +18,7 @@ class ControllerCarro {
     Detalhe(req, res) {
         try {
             const id = req.params.id
-            
+
             const carro = ServiceCarro.Detalhe(id)
 
             res.status(200).send({ mensagem: carro })
@@ -32,7 +32,7 @@ class ControllerCarro {
     Criar(req, res) {
         try {
             const { id, marca, ano } = req.body
-        
+
             ServiceCarro.Criar(id, marca, ano)
 
             res.status(201).send({ mensagem: "Cadastrado com sucesso" })
@@ -54,11 +54,11 @@ class ControllerCarro {
     }
 
     Deletar(req, res) {
-        try{
+        try {
             const id = req.body.id
 
             ServiceCarro.Deletar(id)
-           
+
             res.status(204).send({ mensagem: "Deletado" })
         } catch (error) {
             res.status(500).send({
