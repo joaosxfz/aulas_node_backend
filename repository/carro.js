@@ -4,13 +4,15 @@ import carros from '../model/carro.js'
 class RepositoryCarro {
 
     async Find() {
-        const carrosEncontrados = await carros.findAll()
+        const carros = await carros.findAll()
 
-        return carrosEncontrados
+        return carros
     }
 
-    async Create() {
+    async FindById(id) {
+        const carroDetalhes = await carros.findByPk(id)
 
+        return carroDetalhes
     }
 
     async Update() {
