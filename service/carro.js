@@ -20,13 +20,14 @@ class ServiceCarro {
     }
     // função ( paramatros, pode haver infinitos parametros, mais tenta deixar 5 a 6 paramatros )
     // da para reduzir parametros com Objetos
-    Criar(id, marca, ano) {
-    //     if (!id || !marca || !ano) {
-    //         throw new Error("Favor informar todos os dados")
-    //     }
+    async Criar(marca, ano) {
+         if (!marca || !ano) {
+             throw new Error("Favor informar todos os dados")
+         }
 
-    //     RepositoryCarro.push({ id, marca, ano })
-    //     return { id, marca, ano }
+         const carro = await RepositoryCarro.push.Criar(marca, ano)
+         return carro
+
     }
 
 
