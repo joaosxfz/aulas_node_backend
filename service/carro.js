@@ -1,45 +1,56 @@
 import RepositoryCarro from '../repository/carro.js'
 
-
 class ServiceCarro {
 
-    // Core- Regra De Negocio
+    // Core- Regra de Negocio
     async Buscar() {
-        return RepositoryCarro.Find
+        return RepositoryCarro.find()
     }
 
-    Detalhe(id) {
-        // if (!id) {
-        //     throw new Error("Favor informar o ID")
-        // }
-        // const carro = RepositoryCarro.find(it => it.id === id)
-        // if (!carro) {
-        //     throw new Error(`ID ${id} do carro não encontrado`)
-        // }
-        // return carro
+    async Detalhe(id) {
+        if(!id) {
+            throw new Error("Favor informar o ID")
+        }
+
+        const carro = await RepositoryCarro.findById(id)
+        
+        if(!carro) {
+            throw new Error(`ID ${id} do carro não encontrado`)
+        }
+
+        return carro
     }
-    // função ( paramatros, pode haver infinitos parametros, mais tenta deixar 5 a 6 paramatros )
-    // da para reduzir parametros com Objetos
+    // Função(parametros, parametros, parametros)
     async Criar(marca, ano) {
          if (!marca || !ano) {
              throw new Error("Favor informar todos os dados")
          }
+         const carro = await RepositoryCarro.Create( marca, ano )
 
-         const carro = await RepositoryCarro.push.Criar(marca, ano)
          return carro
-
     }
 
+    async Alterar(id, marca, ano) {
+        if (!id || !marca || !ano) {
+            throw new Error("Favor informar os dados");
+        }
 
-    Alterar() { }
+        const carroAlterado = await RepositoryCarro.Update(id, marca, ano)
 
-    Deletar(id) {
-    //     if (!id) {
-    //         throw new Error("Favor informar o ID")
-    //     }
-    //     RepositoryCarro.splice(it => it.id === id, 1)
-    //     return id
+        return carroAlterado
+    }
+
+    async Deletar(id) {
+
+        if (!id) {
+            throw new Error("Favor informar o ID")
+        }
+        
+        const carro = await RepositoryCarro.Delete(id)
+
+        return carro
     }
 
 }
+
 export default new ServiceCarro()

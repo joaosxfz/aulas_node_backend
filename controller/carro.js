@@ -1,9 +1,7 @@
 import ServiceCarro from '../service/carro.js'
 
 class ControllerCarro {
-
-
-    // Recebimento e a Saida das informações
+    // Recebimento e a Saida das info
     async Buscar(_, res) {
         try {
             const carros = await ServiceCarro.Buscar()
@@ -19,7 +17,7 @@ class ControllerCarro {
         try {
             const id = req.params.id
 
-            const carro = ServiceCarro.Detalhe(id)
+            const carro = await ServiceCarro.Detalhe(id)
 
             res.status(200).send({ mensagem: carro })
         } catch (error) {
@@ -31,9 +29,9 @@ class ControllerCarro {
 
     async Criar(req, res) {
         try {
-            const { id, marca, ano } = req.body
+            const { marca, ano } = req.body
 
-            await ServiceCarro.Criar(id, marca, ano)
+            await ServiceCarro.Criar(marca, ano)
 
             res.status(201).send({ mensagem: "Cadastrado com sucesso" })
         } catch (error) {
@@ -45,7 +43,12 @@ class ControllerCarro {
 
     async Alterar(req, res) {
         try {
-            ServiceCarro.Alterar
+            const { marca, ano } = req.body
+            const id = req.params.id
+
+            await ServiceCarro.Alterar(id, marca, ano)
+
+            res.status(201).send({ mensagem: "Cadastrado com sucesso" })
         } catch (error) {
             res.status(500).send({
                 mensagem: error.message
@@ -55,18 +58,18 @@ class ControllerCarro {
 
     async Deletar(req, res) {
         try {
-            const id = req.body.id
+            const identificador = req.params.id
 
-            ServiceCarro.Deletar(id)
+            await ServiceCarro.Deletar(identificador)
 
             res.status(204).send({ mensagem: "Deletado" })
         } catch (error) {
+
             res.status(500).send({
                 mensagem: error.message
             })
         }
     }
-
 }
 
 export default new ControllerCarro()
