@@ -1,4 +1,5 @@
 // middleware -> auth.js
+// npm i bcrypt jsonwebtoken
 import jwt from "jsonwebtoken";
 
 const segredo = 'mimos4'
