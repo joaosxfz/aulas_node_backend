@@ -1,4 +1,4 @@
-import database from "../config/database.js"
+import database from "../config/database.js";
 
 class Usuario {
     constructor() {
@@ -10,7 +10,7 @@ class Usuario {
             },
             email: {
                 type: database.db.Sequelize.STRING,
-                unique: true
+                unique: true,
             },
             senha: {
                 type: database.db.Sequelize.STRING,
@@ -19,4 +19,4 @@ class Usuario {
     }
 }
 
-export default new Usuario().model 
+export default new Usuario.model()
