@@ -4,7 +4,6 @@ class Database {
     constructor() {
         this.init()
     }
-
     init() {
         this.db = new Sequelize({
             dialect: "mysql",
@@ -16,4 +15,4 @@ class Database {
     }
 }
 
-export default new Database()
+export default new Database
