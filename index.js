@@ -2,6 +2,7 @@ import express from 'express'
 import carro from './router/carro.js'
 import database from './config/database.js'
 
+
 const app = express()
 app.use(express.json())
 

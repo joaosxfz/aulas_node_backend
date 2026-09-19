@@ -1,8 +1,8 @@
-import database from "../config/database.js"
+import database from "../config/database.js" 
 
 class Carro {
     constructor() {
-        this.model = database.db.define("carro", {
+        this.model = database.db.define("carros", {
             id: {
                 type: database.db.Sequelize.INTEGER,
                 primaryKey: true,
@@ -12,7 +12,7 @@ class Carro {
                 type: database.db.Sequelize.STRING,
             },
             ano: {
-                type: database.db.Sequelize.INTEGER
+                type: database.db.Sequelize.INTEGER,
             }
         })
     }
