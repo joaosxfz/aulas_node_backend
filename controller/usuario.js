@@ -2,7 +2,7 @@ import ServiceUsuario from '../service/usuario.js'
 
 class ControllerUsuario {
     // Recebimento e a Saida das info
-    async Buscar(req, res) {  
+    async Buscar(req, res) {
         try {
             console.log(req.session)
             const usuarios = await ServiceUsuario.Buscar()
@@ -33,7 +33,7 @@ class ControllerUsuario {
             const { email, senha } = req.body
 
             await ServiceUsuario.Criar(email, senha)
-            
+
             res.status(201).send({ mensagem: "Cadastrado com sucesso" })
         } catch (error) {
             res.status(500).send({
@@ -48,7 +48,7 @@ class ControllerUsuario {
             const id = req.params.id
 
             await ServiceUsuario.Alterar(id, email, senha)
-            
+
             res.status(201).send({ mensagem: "Cadastrado com sucesso" })
         } catch (error) {
             res.status(500).send({
@@ -65,7 +65,7 @@ class ControllerUsuario {
 
             res.status(204).send({ mensagem: "Deletado" })
         } catch (error) {
-            
+
             res.status(500).send({
                 mensagem: error.message
             })
@@ -82,7 +82,7 @@ class ControllerUsuario {
                 token
             })
         } catch (error) {
-            
+
             res.status(500).send({
                 mensagem: error.message
             })
