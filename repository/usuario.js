@@ -1,7 +1,5 @@
-import carro from '../model/carro.js'
 import usuario from '../model/usuario.js'
 
-// INSERT INTO carros (marca, ano) VALUES ("FIAT", 1998)
 class RepositoryUsuario {
 
     async find() {
@@ -50,7 +48,7 @@ class RepositoryUsuario {
     }
 
     async findByEmail(email) {
-        return usuario.findOne({ where: { email }})
+        return usuario.findOne({ where: { email } })
     }
 }
 

@@ -2,11 +2,10 @@ import RepositoryUsuario from '../repository/usuario.js'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
-const segredo = 'M3uS3rg3d0'
+const segredo = 'mimos4'
 
 class ServiceUsuario {
 
-    // Core- Regra de Negocio
     async Buscar() {
         return RepositoryUsuario.find()
     }
@@ -24,7 +23,7 @@ class ServiceUsuario {
 
         return usuario
     }
-    // Função(parametros, parametros, parametros)
+
     async Criar(email, senha) {
         if (!email || !senha) {
             throw new Error("Favor informar todos os dados")
@@ -42,15 +41,14 @@ class ServiceUsuario {
             throw new Error("Favor informar os dados");
         }
 
-        const senhaCripto = !senha ? undefined : await bcrypt.hash(senha, 12) //ternario
+        const senhaCripto = await bcrypt.hash(senha, 12)
 
-        const usuarioAlterado = await RepositoryUsuario.Update(id, email, senha)
+        const usuarioAlterado = await RepositoryUsuario.Update(id, email, senhaCripto)
 
         return usuarioAlterado
     }
 
     async Deletar(id) {
-
         if (!id) {
             throw new Error("Favor informar o ID")
         }
@@ -65,7 +63,7 @@ class ServiceUsuario {
             throw new Error("Email ou senha inválido")
         }
 
-        const usuario = await RepositoryUsuario.FindByEmail(email)
+        const usuario = await RepositoryUsuario.findByEmail(email)
 
         if (!usuario) {
             throw new Error("Email ou senha inválido")
