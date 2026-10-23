@@ -1,10 +1,16 @@
 import { useState } from 'react';
 import './style.css'
-import { getLogin } from '../../api/api';
+import { loginUser } from '../../api/user';
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+
+    const handleSubmit = async (e) => {
+        e.preventDefault() //parar o envio automatico do formulario
+        const response = await loginUser(email, senha)
+        localStorage.setItem('token', response.token)
+    }
 
     return (
         <div className="login-container">
@@ -30,14 +36,11 @@ export default function Login() {
                         onChange={(e) => setSenha(e.target.value)}
                     />
                 </div>
-                {/* <h3><h2> Não possui conta?</h2> <spam className="signup" onClick={() => {}}>Cadastre-se</spam></h3> */}
+                <p>Não possui conta? <span className="signup" onClick={() => { }}>Cadastre-se</span></p>
                 <button
                     className="button"
                     type="submit"
-                    onClick={(e) => {
-                        e.preventDefault()
-                        getLogin()
-                    }}
+                    onClick={handleSubmit}
                 >Entrar</button>
                 <button
                     className="button back-button"

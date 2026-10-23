@@ -8,7 +8,7 @@
 }
 
 .login-form {
-    background: rgb(14, 10, 10);
+    background: rgb(82, 83, 90);
     padding: 50px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(206, 37, 37, 0.1);
@@ -51,11 +51,11 @@
 
 .back-button {
     background-color: #8a8a8a;
-    color: rgb(0, 0, 0);
+    color: rgb(253, 253, 253);
 }
 
 .button:hover {
-    background-color: #0056b3;
+    background-color: #095db6;
 }
 
 .back-button:hover {
@@ -74,7 +74,7 @@
 }
 
 .signup:hover {
-    background-color: #0056b3;
+    background-color: #b91818;
     border-radius: 25px;
     color: #FFF;
 }
