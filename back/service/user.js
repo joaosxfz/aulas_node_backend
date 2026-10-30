@@ -12,7 +12,7 @@ class ServiceUser {
     }
 
     async Detalhe(id) {
-        if(!id) {
+        if (!id) {
             throw new Error("Favor informar o ID")
         }
 
@@ -20,7 +20,7 @@ class ServiceUser {
     }
 
     async Criar(name, email, password) {
-        if(!name || !email || !password) {
+        if (!name || !email || !password) {
             throw new Error("Favor informar todos os parametros")
         }
 
@@ -30,10 +30,10 @@ class ServiceUser {
     }
 
     async Alterar(id, name, email, password) {
-        if(!id || !name || !email || !password) {
+        if (!id || !name || !email || !password) {
             throw new Error("Favor informar todos os parametros")
         }
-        
+
         const cryptPass = !password
             ? undefined
             : await bcrypt.hash(password, SALT)
@@ -42,7 +42,7 @@ class ServiceUser {
     }
 
     async Deletar(id) {
-        if(!id) {
+        if (!id) {
             throw new Error("Favor informar o ID")
         }
 
@@ -50,16 +50,16 @@ class ServiceUser {
     }
 
     async Login(email, password) {
-        if(!email || !password) {
+        if (!email || !password) {
             throw new Error("Email ou senha inválido")
         }
 
         const user = await RepositoryUser.BuscarEmail(email)
 
-        if(
-            !user 
+        if (
+            !user
             || !(await bcrypt.compare(String(password), user.password))
-        ){
+        ) {
             throw new Error("Email ou senha inválido")
         }
 
